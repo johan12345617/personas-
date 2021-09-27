@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label  class="form-label">Tipo de Documento</label>
+                    <select  class="form-select" formControlName="documentType">
+                      <option>DNI</option>
+                      <option>Carnet de Extranjeria</option>
+                    </select>
+                  </div>
+            
+                <div class="form-group">
+                    <label for="documentId">Numero de documento</label>
+                    <input type="text" class="form-control"  formControlName="documentId">
+                  </div>
+            
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" formControlName="name" >
+                </div>
+            
+                <div class="form-group">
+                    <label for="lastName">Apellido</label>
+                    <input type="text" class="form-control" formControlName="lastName" >
+                </div>
+            
+                <div class="form-group">
+                    <label for="birthdayDate">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" formControlName="birthdayDate">
+                </div>
+            
+                <div class="form-group">
+                    <label for="address">Departamento</label>
+                    <input type="text" class="form-control" formControlName="departamento">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Provincia</label>
+                    <input type="text" class="form-control" formControlName="provincia">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Distrito</label>
+                    <input type="text" accept=".png,.jpg" (change)=onUpload($event) class="form-control" formControlName="distrito">
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <input type="file" class="form-control" formControlName="photo">
+                </div>
+            
+                <div class="form-group">
+                    <label  class="form-label">Genero</label>
+                    <select  class="form-select" formControlName="gender">
+                      <option>Hombre</option>
+                      <option>Mujer</option>
+                    </select>
+                  </div>
+            
+                <div class="form-group">
+                    <label for="age">Edad</label>
+                    <input type="number" class="form-control" formControlName="age">
+                </div>
+            
+                <button type="submit" class="btn btn-primary" (click)="editPersona()">Actualizar</button>
+              </form>
+            
+        </div>
+    </div>
+</div>

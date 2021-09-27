@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Personas</h3>
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Filter
+                </button>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="documentId">Edad</label>
+                                    <input type="text" class="form-control" [(ngModel)]='edad'>                             
+                                </div>
+                                <div class="col-4">
+                                    genero
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="Mujer" [(ngModel)]="gender">
+                                        <label class="btn btn-outline-primary" for="btnradio1">Mujer</label>
+                                    
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="Hombre" [(ngModel)]="gender">
+                                        <label class="btn btn-outline-primary" for="btnradio2">Hombre</label>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <label for="documentId">Distrito</label>
+                                    <input type="text" class="form-control"  [(ngModel)]='distrito'>    
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn btn-primary" type="button" (click)="filtrar()">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+              </div>
+        </div>
+        <div class="card-body">
+            <table class="table tabler-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>FOTO</th>
+                        <th>TIPO DOC.</th>
+                        <th>NUMERO DOC</th>
+                        <th>NOMBRES</th>
+                        <th>APELLIDOS</th>
+                        <th>FECHA DE NACIMIENTO</th>
+                        <th>GENERO</th>
+                        <th>EDAD</th>
+                        <th>DIRECCION</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let persona of personas" class="text-center">
+                        <td>{{persona.photo}}</td>
+                        <td>{{persona.documentType}}</td>
+                        <td>{{persona.documentId}}</td>
+                        <td>{{persona.name}}</td>
+                        <td>{{persona.lastName}}</td>
+                        <td>{{persona.birthdayDate}}</td>
+                        <td>{{persona.gender}}</td>
+                        <td>{{persona.age}}</td>
+                        <td>{{persona.departamento}},{{persona.provincia}},{{persona.distrito}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="goToEdit(persona)">Editar</button>
+                            <button class="btn btn-danger" style="margin-left: 10px;"  
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
+                            <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        ¿Esta seguro de eliminar esta persona?
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <button type="button" class="btn btn-primary" (click)="delete(persona)" data-bs-dismiss="modal">Si</button>
+                                        </div>
+                                    </div>
+                                    </div>                               
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary" (click)="generarReporte()">Generar Reporte</button>
